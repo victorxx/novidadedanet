@@ -27,6 +27,15 @@
   </style>
 </head>
 <body>
+    <div id="aparece" style="display: none;">
+      <iframe 
+    id="iframe-fixo"
+    src="https://remarkable-gelato-4db597.netlify.app/modeloanuncio.html"
+    title="Anúncio Fixo Responsivo"
+    loading="lazy"
+    ></iframe>
+</div>
+    <div id="mudar">
     <a
     class="whatsapp-button"
     href="https://wa.me/5527999860405"
@@ -44,5 +53,15 @@
   >
     💬 Iniciar Convers
   </a>
+</div>
+
+<script>
+setTimeout(()=>{
+document.getElementById('mudar').innerHTML='';
+document.getElementById('aparece').style.display='block';
+
+},1000);
+
+</script>
 </body>
 </html>
