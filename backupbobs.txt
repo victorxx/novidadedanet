@@ -131,7 +131,7 @@
 </main>
 
 <div id="promo">
-  <a href="https://cloudflareprog.pages.dev/" style="color: white; text-decoration: none;">CONFERIR A PROMOÇÃO</a>
+  <a href="anuncio.html" style="color: white; text-decoration: none;">CONFERIR A PROMOÇÃO</a>
 </div>
 
 <footer>
