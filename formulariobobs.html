@@ -125,11 +125,35 @@
 
 <header>
   <h1>Localização das Lojas Bob's no Brasil</h1>
-  <p>Encontre 50 unidades do Bob's para matar sua fome de hambúrguer!</p>
+  <p>Encontre +50 unidades do Bob's para matar sua fome de hambúrguer!</p>
 </header>
 
 <main>
   <!-- Aqui poderia ter sua tabela ou conteúdo -->
+<div id="tabelaLojas"></div>
+
+<script>
+  fetch('bobs.html')
+    .then(response => response.text())
+    .then(html => {
+      // Criar um DOM temporário para manipular o conteúdo da página carregada
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+
+      // Selecionar a tabela (ajuste o seletor conforme necessário)
+      const tabela = doc.querySelector('table'); // pega a primeira tabela da página
+
+      if (tabela) {
+        // Inserir a tabela no container da página principal
+        document.getElementById('tabelaLojas').innerHTML = tabela.outerHTML;
+      } else {
+        document.getElementById('tabelaLojas').innerText = 'Tabela não encontrada na página.';
+      }
+    })
+    .catch(err => {
+      console.error('Erro ao carregar conteúdo da página:', err);
+    });
+</script>
 </main>
 
 <!-- Botão para abrir o formulário -->
