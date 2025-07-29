@@ -125,11 +125,43 @@
 
 <header>
   <h1>Localização das Lojas Bob's no Brasil</h1>
-  <p>Encontre 50 unidades do Bob's para matar sua fome de hambúrguer!</p>
+  <p>Encontre +50 unidades do Bob's para matar sua fome de hambúrguer!</p>
 </header>
 
 <main>
-  <!-- Aqui poderia ter sua tabela ou conteúdo -->
+  <div id="tabelaLojas">Carregando lojas...</div>
+
+  <script>
+    // Função para carregar conteúdo de uma página externa via fetch
+    function carregarTabela() {
+      fetch('bobs.html') // Caminho do arquivo que contém a tabela
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao carregar o conteúdo.');
+          return response.text();
+        })
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+
+          // Tenta pegar a tabela
+          const tabela = doc.querySelector('table');
+          
+          if (tabela) {
+            // Se encontrou a tabela, insere ela na página
+            document.getElementById('tabelaLojas').innerHTML = tabela.outerHTML;
+          } else {
+            document.getElementById('tabelaLojas').innerText = 'Tabela não encontrada na página.';
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao carregar conteúdo da página:', error);
+          document.getElementById('tabelaLojas').innerText = 'Não foi possível carregar a tabela. Tente novamente mais tarde.';
+        });
+    }
+
+    // Chama a função ao carregar a página
+    window.onload = carregarTabela;
+  </script>
 </main>
 
 <!-- Botão para abrir o formulário -->
