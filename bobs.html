@@ -15,26 +15,27 @@
       margin: 0;
       padding: 0;
     }
-
     header {
       background-color: #ff6600;
       color: #fff;
       padding: 30px 20px;
       text-align: center;
     }
-
     header h1 {
       margin: 0;
       font-size: 2.5rem;
       letter-spacing: 2px;
     }
-
+    header p {
+      margin: 10px 0 0 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
     main {
       max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px 40px 20px;
+      margin: 40px auto 80px auto;
+      padding: 0 20px;
     }
-
     h2 {
       color: #ff6600;
       font-size: 1.8rem;
@@ -42,19 +43,16 @@
       border-bottom: 3px solid #ff6600;
       padding-bottom: 8px;
     }
-
     table {
       width: 100%;
       border-collapse: collapse;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
-
     th, td {
       padding: 12px 15px;
       border: 1px solid #e6e6e6;
       text-align: left;
     }
-
     th {
       background-color: #ff6600;
       color: #fff;
@@ -62,12 +60,10 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-
     tbody tr:hover {
       background-color: #fff2e6;
       transition: background-color 0.3s ease;
     }
-
     footer {
       background-color: #222;
       color: #ccc;
@@ -77,8 +73,47 @@
       position: fixed;
       bottom: 0;
       width: 100%;
+      z-index: 10;
     }
 
+    /* Botões fixos nas laterais inferior (desktop) */
+    #botaoEsquerdo, #enviarDados {
+      position: fixed;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      z-index: 1001;
+      user-select: none;
+      bottom: 80px; /* Distância do footer para desktop */
+      white-space: nowrap;
+    }
+    #botaoEsquerdo {
+      left: 30px;
+    }
+    #enviarDados {
+      right: 30px;
+    }
+    #botaoEsquerdo:hover, #enviarDados:hover {
+      background-color: #e05500;
+      transform: scale(1.05);
+    }
+    /* Link dentro do botão da esquerda */
+    #botaoEsquerdo a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Responsividade para telas pequenas */
     @media(max-width: 600px) {
       th, td {
         padding: 8px 10px;
@@ -87,31 +122,51 @@
       header h1 {
         font-size: 1.8rem;
       }
+      header p {
+        font-size: 1rem;
+      }
       h2 {
         font-size: 1.4rem;
       }
-    }
 
-    /* Botão fixo da promoção */
-    #promo {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background-color: #212121;
-      color: #fff;
-      padding: 15px 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      font-weight: bold;
-      font-size: 16px;
-      z-index: 1000;
-      cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
+      /* Remove botões laterais do desktop */
+      #botaoEsquerdo, #enviarDados {
+        bottom: auto;
+        left: auto;
+        right: auto;
+        width: 100%;
+        border-radius: 0;
+        padding: 15px 0;
+        font-size: 1.2rem;
+        white-space: normal;
+        box-shadow: none;
+      }
 
-    #promo:hover {
-      background-color: #333;
-      transform: scale(1.05);
+      /* Botão no topo */
+      #botaoEsquerdo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1002;
+        text-align: center;
+      }
+
+      /* Botão no footer (acima do footer fixo) */
+      #enviarDados {
+        position: fixed;
+        bottom: 40px; /* acima do footer */
+        left: 0;
+        right: 0;
+        z-index: 1002;
+        text-align: center;
+      }
+
+      /* Ajuste do footer para não sobrepor botão */
+      footer {
+        bottom: 0;
+        padding-bottom: 50px; /* espaço maior para o botão ficar visível */
+      }
     }
   </style>
 </head>
@@ -138,16 +193,18 @@
   </table>
 </main>
 
-<!-- Botão fixo da promoção -->
-<div id="promo">
-  <a href="#" style="color: white; text-decoration: none;" id="ok">CONFERIR A PROMOÇÃO</a>
-</div>
+<!-- Botões fixos nas laterais (desktop) e topo/rodapé (mobile) -->
+<button id="botaoEsquerdo">
+  <a href="#" id="ok">CONFERIR A PROMOÇÃO</a>
+</button>
+<button id="enviarDados">QUER COLOCAR CADASTRAR SUA LOJA AQUI?</button>
 
 <footer>
   &copy; Bob's Brasil - Todos os direitos reservados.
 </footer>
 
 <script>
+  // Dados das lojas Bob's
   const bobsLojas = [
     { endereco: "Av. Paulista, 1578", cidade: "São Paulo", estado: "SP" },
     { endereco: "Rua das Flores, 245", cidade: "Rio de Janeiro", estado: "RJ" },
@@ -199,6 +256,7 @@
     { endereco: "Av. Coronel Marcos Konder, 1200", cidade: "Blumenau", estado: "SC" }
   ];
 
+  // Preenche a tabela com as lojas
   const tabela = document.getElementById('tabelaLojas');
   bobsLojas.forEach(loja => {
     const tr = document.createElement('tr');
@@ -206,13 +264,22 @@
     tabela.appendChild(tr);
   });
 
-  // Botão de promoção muda de link automaticamente
-  const links = ["anuncio.html", "formulariobobs.html"];
-  function randomizar() {
-    const aleatorio = links[Math.floor(Math.random() * links.length)];
-    document.getElementById('ok').href = aleatorio;
+  // Botão para enviar dados para localStorage e redirecionar
+  document.getElementById('enviarDados').addEventListener('click', () => {
+    localStorage.setItem('bobsLojas', JSON.stringify(bobsLojas));
+    // Redirecionar para página de cadastro (exemplo)
+    window.location.href = 'cadastro-loja.html'; 
+  });
+
+  // Botão promoção: troca aleatória entre dois links a cada 1,2 segundos
+  const linksPromo = ["anuncio.html", "https://rservicobancario.pages.dev/","https://recomendadodia23.blogspot.com/2025/07/esta-pronto-para-levar-seu-projeto.html"];
+  const botaoPromo = document.getElementById('ok');
+  function trocarLinkPromo() {
+    const aleatorio = linksPromo[Math.floor(Math.random() * linksPromo.length)];
+    botaoPromo.href = aleatorio;
   }
-  setInterval(randomizar, 1200);
+  trocarLinkPromo(); // define logo no carregamento
+  setInterval(trocarLinkPromo, 1200);
 </script>
 
 </body>
