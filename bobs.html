@@ -15,22 +15,26 @@
       margin: 0;
       padding: 0;
     }
+
     header {
       background-color: #ff6600;
       color: #fff;
       padding: 30px 20px;
       text-align: center;
     }
+
     header h1 {
       margin: 0;
       font-size: 2.5rem;
       letter-spacing: 2px;
     }
+
     main {
       max-width: 1100px;
       margin: 40px auto;
       padding: 0 20px 40px 20px;
     }
+
     h2 {
       color: #ff6600;
       font-size: 1.8rem;
@@ -38,16 +42,19 @@
       border-bottom: 3px solid #ff6600;
       padding-bottom: 8px;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
+
     th, td {
       padding: 12px 15px;
       border: 1px solid #e6e6e6;
       text-align: left;
     }
+
     th {
       background-color: #ff6600;
       color: #fff;
@@ -55,10 +62,12 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
+
     tbody tr:hover {
       background-color: #fff2e6;
       transition: background-color 0.3s ease;
     }
+
     footer {
       background-color: #222;
       color: #ccc;
@@ -69,6 +78,7 @@
       bottom: 0;
       width: 100%;
     }
+
     @media(max-width: 600px) {
       th, td {
         padding: 8px 10px;
@@ -81,6 +91,8 @@
         font-size: 1.4rem;
       }
     }
+
+    /* Botão fixo da promoção */
     #promo {
       position: fixed;
       bottom: 30px;
@@ -111,10 +123,6 @@
 </header>
 
 <main>
-  <div id="ads">
-
-  </div>
-
   <h2>Lista de Lojas Bob's - Endereço, Cidade e Estado</h2>
   <table>
     <thead>
@@ -125,17 +133,18 @@
       </tr>
     </thead>
     <tbody id="tabelaLojas">
-      <!-- Tabela será preenchida via JavaScript -->
+      <!-- Conteúdo será preenchido via JavaScript -->
     </tbody>
   </table>
 </main>
 
+<!-- Botão fixo da promoção -->
 <div id="promo">
-  <a href="#" style="color: white; text-decoration: none;"  id="ok">CONFERIR A PROMOÇÃO</a>
+  <a href="#" style="color: white; text-decoration: none;" id="ok">CONFERIR A PROMOÇÃO</a>
 </div>
 
 <footer>
-  &copy;  Bob's Brasil - Todos os direitos reservados.
+  &copy; Bob's Brasil - Todos os direitos reservados.
 </footer>
 
 <script>
@@ -196,19 +205,15 @@
     tr.innerHTML = `<td>${loja.endereco}</td><td>${loja.cidade}</td><td>${loja.estado}</td>`;
     tabela.appendChild(tr);
   });
-</script>
-<!-------------------mudandoolink-->
-<script>
-  let links=[
-    "anuncio.html",
-    "formulariobobs.html"
-  ];
-  function randomizar(){
-    let mudar= links[Math.floor(Math.random()*links.length)];
-    document.getElementById('ok').href=mudar;
+
+  // Botão de promoção muda de link automaticamente
+  const links = ["anuncio.html", "formulariobobs.html"];
+  function randomizar() {
+    const aleatorio = links[Math.floor(Math.random() * links.length)];
+    document.getElementById('ok').href = aleatorio;
   }
-  setInterval(randomizar,1200);
+  setInterval(randomizar, 1200);
 </script>
-<!-------------------mudandoolink-->
+
 </body>
 </html>
