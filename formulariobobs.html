@@ -129,39 +129,58 @@
 </header>
 
 <main>
-  <div id="tabelaLojas">Carregando lojas...</div>
+  <div id="conteudo">
+  <p>Carregando dados...</p>
+</div>
 
-  <script>
-    // Função para carregar conteúdo de uma página externa via fetch
-    function carregarTabela() {
-      fetch('bobs.html') // Caminho do arquivo que contém a tabela
-        .then(response => {
-          if (!response.ok) throw new Error('Erro ao carregar o conteúdo.');
-          return response.text();
-        })
-        .then(html => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(html, 'text/html');
+<script>
+  // Quando a página carregar
+  window.addEventListener('DOMContentLoaded', () => {
+    const dadosJSON = localStorage.getItem('bobsLojas');
 
-          // Tenta pegar a tabela
-          const tabela = doc.querySelector('table');
-          
-          if (tabela) {
-            // Se encontrou a tabela, insere ela na página
-            document.getElementById('tabelaLojas').innerHTML = tabela.outerHTML;
-          } else {
-            document.getElementById('tabelaLojas').innerText = 'Tabela não encontrada na página.';
-          }
-        })
-        .catch(error => {
-          console.error('Erro ao carregar conteúdo da página:', error);
-          document.getElementById('tabelaLojas').innerText = 'Não foi possível carregar a tabela. Tente novamente mais tarde.';
-        });
+    if (!dadosJSON) {
+      document.getElementById('conteudo').innerHTML = "<p style='color:red;'>Nenhum dado encontrado no localStorage.</p>";
+      return;
     }
 
-    // Chama a função ao carregar a página
-    window.onload = carregarTabela;
-  </script>
+    const lojas = JSON.parse(dadosJSON);
+
+    if (!Array.isArray(lojas)) {
+      document.getElementById('conteudo').innerHTML = "<p style='color:red;'>Erro ao processar os dados recebidos.</p>";
+      return;
+    }
+
+    // Criar a tabela
+    let tabelaHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>Endereço</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+
+    lojas.forEach(loja => {
+      tabelaHTML += `
+        <tr>
+          <td>${loja.endereco}</td>
+          <td>${loja.cidade}</td>
+          <td>${loja.estado}</td>
+        </tr>
+      `;
+    });
+
+    tabelaHTML += `
+        </tbody>
+      </table>
+    `;
+
+    document.getElementById('conteudo').innerHTML = tabelaHTML;
+  });
+</script>
 </main>
 
 <!-- Botão para abrir o formulário -->
