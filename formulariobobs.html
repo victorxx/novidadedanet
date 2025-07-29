@@ -129,58 +129,7 @@
 </header>
 
 <main>
-  <div id="conteudo">
-  <p>Carregando dados...</p>
-</div>
 
-<script>
-  // Quando a página carregar
-  window.addEventListener('DOMContentLoaded', () => {
-    const dadosJSON = localStorage.getItem('bobsLojas');
-
-    if (!dadosJSON) {
-      document.getElementById('conteudo').innerHTML = "<p style='color:red;'>Nenhum dado encontrado no localStorage.</p>";
-      return;
-    }
-
-    const lojas = JSON.parse(dadosJSON);
-
-    if (!Array.isArray(lojas)) {
-      document.getElementById('conteudo').innerHTML = "<p style='color:red;'>Erro ao processar os dados recebidos.</p>";
-      return;
-    }
-
-    // Criar a tabela
-    let tabelaHTML = `
-      <table>
-        <thead>
-          <tr>
-            <th>Endereço</th>
-            <th>Cidade</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-    `;
-
-    lojas.forEach(loja => {
-      tabelaHTML += `
-        <tr>
-          <td>${loja.endereco}</td>
-          <td>${loja.cidade}</td>
-          <td>${loja.estado}</td>
-        </tr>
-      `;
-    });
-
-    tabelaHTML += `
-        </tbody>
-      </table>
-    `;
-
-    document.getElementById('conteudo').innerHTML = tabelaHTML;
-  });
-</script>
 </main>
 
 <!-- Botão para abrir o formulário -->
