@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Encontre 50 lojas do Bob's pelo Brasil com endereço completo, cidade e estado. Saiba onde saborear os deliciosos hambúrgueres do Bob's." />
+  <meta name="keywords" content="Bob's, Bob's Brasil, lojas Bob's, endereço Bob's, hamburgueria Bob's" />
+  <meta name="author" content="Bob's Brasil" />
+  <title>Localização das Lojas Bob's no Brasil - 50 Unidades</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff9f0;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #ff6600;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+    main {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px 40px 20px;
+    }
+    h2 {
+      color: #ff6600;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #ff6600;
+      padding-bottom: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px 15px;
+      border: 1px solid #e6e6e6;
+      text-align: left;
+    }
+    th {
+      background-color: #ff6600;
+      color: #fff;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    tbody tr:hover {
+      background-color: #fff2e6;
+      transition: background-color 0.3s ease;
+    }
+    footer {
+      background-color: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 0.9rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    @media(max-width: 600px) {
+      th, td {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+      }
+      header h1 {
+        font-size: 1.8rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+    }
+    #promo {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #212121;
+      color: #fff;
+      padding: 15px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      font-weight: bold;
+      font-size: 16px;
+      z-index: 1000;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    #promo:hover {
+      background-color: #333;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Localização das Lojas Bob's no Brasil</h1>
+  <p>Encontre 50 unidades do Bob's para matar sua fome de hambúrguer!</p>
+</header>
+
+<main>
+  <div id="ads">
+
+  </div>
+
+  <h2>Lista de Lojas Bob's - Endereço, Cidade e Estado</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Endereço</th>
+        <th>Cidade</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody id="tabelaLojas">
+      <!-- Tabela será preenchida via JavaScript -->
+    </tbody>
+  </table>
+</main>
+
+<div id="promo">
+  <a href="https://cloudflareprog.pages.dev/" style="color: white; text-decoration: none;">CONFERIR A PROMOÇÃO</a>
+</div>
+
+<footer>
+  &copy;  Bob's Brasil - Todos os direitos reservados.
+</footer>
+
+<script>
+  const bobsLojas = [
+    { endereco: "Av. Paulista, 1578", cidade: "São Paulo", estado: "SP" },
+    { endereco: "Rua das Flores, 245", cidade: "Rio de Janeiro", estado: "RJ" },
+    { endereco: "Av. Atlântica, 3400", cidade: "Rio de Janeiro", estado: "RJ" },
+    { endereco: "Shopping Center Norte, Loja 109", cidade: "São Paulo", estado: "SP" },
+    { endereco: "Rua da Bahia, 765", cidade: "Belo Horizonte", estado: "MG" },
+    { endereco: "Av. das Américas, 4666", cidade: "Rio de Janeiro", estado: "RJ" },
+    { endereco: "Shopping Iguatemi, Piso 2, Loja 201", cidade: "Porto Alegre", estado: "RS" },
+    { endereco: "Av. Sete de Setembro, 1990", cidade: "Curitiba", estado: "PR" },
+    { endereco: "Rua XV de Novembro, 1200", cidade: "Curitiba", estado: "PR" },
+    { endereco: "Av. Santos Dumont, 1500", cidade: "Fortaleza", estado: "CE" },
+    { endereco: "Rua 13 de Maio, 900", cidade: "Fortaleza", estado: "CE" },
+    { endereco: "Av. Ipiranga, 2000", cidade: "Porto Alegre", estado: "RS" },
+    { endereco: "Rua São José, 450", cidade: "Porto Alegre", estado: "RS" },
+    { endereco: "Shopping Recife, Loja 314", cidade: "Recife", estado: "PE" },
+    { endereco: "Av. Boa Viagem, 345", cidade: "Recife", estado: "PE" },
+    { endereco: "Rua Quinze de Novembro, 550", cidade: "Florianópolis", estado: "SC" },
+    { endereco: "Av. Beira Mar, 123", cidade: "Florianópolis", estado: "SC" },
+    { endereco: "Av. Governador Celso Ramos, 230", cidade: "Balneário Camboriú", estado: "SC" },
+    { endereco: "Av. Santos Dumont, 778", cidade: "Manaus", estado: "AM" },
+    { endereco: "Rua dos Andradas, 432", cidade: "Manaus", estado: "AM" },
+    { endereco: "Rua da Consolação, 800", cidade: "São Paulo", estado: "SP" },
+    { endereco: "Shopping Eldorado, Loja 411", cidade: "São Paulo", estado: "SP" },
+    { endereco: "Av. Rio Branco, 900", cidade: "Rio de Janeiro", estado: "RJ" },
+    { endereco: "Rua do Ouvidor, 100", cidade: "Rio de Janeiro", estado: "RJ" },
+    { endereco: "Rua Oscar Freire, 1200", cidade: "São Paulo", estado: "SP" },
+    { endereco: "Av. Getúlio Vargas, 3500", cidade: "Belo Horizonte", estado: "MG" },
+    { endereco: "Rua Santa Catarina, 87", cidade: "Belo Horizonte", estado: "MG" },
+    { endereco: "Av. Marechal Deodoro, 670", cidade: "Curitiba", estado: "PR" },
+    { endereco: "Av. Atlântica, 2100", cidade: "Balneário Camboriú", estado: "SC" },
+    { endereco: "Shopping Center Sul, Loja 110", cidade: "São Paulo", estado: "SP" },
+    { endereco: "Rua das Palmeiras, 44", cidade: "Fortaleza", estado: "CE" },
+    { endereco: "Av. Santos Dumont, 230", cidade: "Fortaleza", estado: "CE" },
+    { endereco: "Rua Benjamin Constant, 200", cidade: "Belém", estado: "PA" },
+    { endereco: "Av. Nazaré, 1200", cidade: "Belém", estado: "PA" },
+    { endereco: "Rua Dr. João Carlos, 350", cidade: "Campinas", estado: "SP" },
+    { endereco: "Av. Francisco Glicério, 1700", cidade: "Campinas", estado: "SP" },
+    { endereco: "Rua das Hortênsias, 150", cidade: "São José dos Campos", estado: "SP" },
+    { endereco: "Av. Nove de Julho, 870", cidade: "São José dos Campos", estado: "SP" },
+    { endereco: "Rua do Comércio, 500", cidade: "São Luís", estado: "MA" },
+    { endereco: "Av. dos Holandeses, 1600", cidade: "São Luís", estado: "MA" },
+    { endereco: "Rua Sete de Setembro, 420", cidade: "Goiânia", estado: "GO" },
+    { endereco: "Av. Independência, 700", cidade: "Goiânia", estado: "GO" },
+    { endereco: "Rua Tiradentes, 210", cidade: "João Pessoa", estado: "PB" },
+    { endereco: "Av. Epitácio Pessoa, 1050", cidade: "João Pessoa", estado: "PB" },
+    { endereco: "Rua Augusta, 2200", cidade: "São Paulo", estado: "SP" },
+    { endereco: "Av. Iguaçu, 4400", cidade: "Curitiba", estado: "PR" },
+    { endereco: "Rua 24 de Outubro, 600", cidade: "Florianópolis", estado: "SC" },
+    { endereco: "Av. Coronel Marcos Konder, 1200", cidade: "Blumenau", estado: "SC" }
+  ];
+
+  const tabela = document.getElementById('tabelaLojas');
+  bobsLojas.forEach(loja => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${loja.endereco}</td><td>${loja.cidade}</td><td>${loja.estado}</td>`;
+    tabela.appendChild(tr);
+  });
+</script>
+
+</body>
+</html>
