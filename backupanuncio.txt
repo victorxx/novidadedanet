@@ -161,6 +161,16 @@ body {
 
 
     const promoOptions = [
+                                 {url: "https://recomendadodia23.blogspot.com/2025/07/coloque-seu-site-no-ar-com-velocidade.html", text: "Seu                                         site online com alta performance e segurança"},
+                                  {url: "https://recomendadodia23.blogspot.com/2025/07/coloque-seu-site-no-ar-com-velocidade.html", text:                                           "Infraestrutura profissional para seu sistema web"},
+                                  {url: "https://recomendadodia23.blogspot.com/2025/07/coloque-seu-site-no-ar-com-velocidade.html", text:                                            "Velocidade, estabilidade e suporte na sua hospedagem"},
+                                  {url: "https://recomendadodia23.blogspot.com/2025/07/coloque-seu-site-no-ar-com-velocidade.html", text:                                            "Plataforma confiável para hospedar seu site ou app"},
+                                  {url: "https://recomendadodia23.blogspot.com/2025/07/coloque-seu-site-no-ar-com-velocidade.html", text:                                           "Coloque sua aplicação online sem complicações"},
+                                  {url: "https://recomendadodia23.blogspot.com/2025/07/coloque-seu-site-no-ar-com-velocidade.html", text:                                           "Garanta presença digital com hospedagem eficiente"},
+                                  {url: "https://recomendadodia23.blogspot.com/2025/07/coloque-seu-site-no-ar-com-velocidade.html", text: "Tenha                                    seu sistema no ar com poucos cliques"},
+                                  {url: "https://recomendadodia23.blogspot.com/2025/07/coloque-seu-site-no-ar-com-velocidade.html", text:                                            "Rendimento máximo para seu site ou aplicação"},
+                                  {url: "https://recomendadodia23.blogspot.com/2025/07/coloque-seu-site-no-ar-com-velocidade.html", text: "Seu                                      projeto online começa com hospedagem de qualidade"},
+                                  {url: "https://recomendadodia23.blogspot.com/2025/07/coloque-seu-site-no-ar-com-velocidade.html", text:                                           "Simples, rápido e seguro: hospede agora seu site"},
                       {url: "https://rservicobancario.pages.dev/", text: "SIMULE SEU CONSÓRCIO AGORA MESMO"},
                       {url: "https://rservicobancario.pages.dev/", text: "PARCELAS QUE CABEM NO SEU BOLSO"},
                       {url: "https://rservicobancario.pages.dev/", text: "ENTRE PARA UM CONSÓRCIO DE FORMA FÁCIL"},
