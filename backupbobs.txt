@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Encontre 50 lojas do Bob's pelo Brasil com endereço completo, cidade e estado. Saiba onde saborear os deliciosos hambúrgueres do Bob's." />
+  <meta name="description" content="Encontre +50 lojas do Bob's pelo Brasil com endereço completo, cidade e estado. Saiba onde saborear os deliciosos hambúrgueres do Bob's." />
   <meta name="keywords" content="Bob's, Bob's Brasil, lojas Bob's, endereço Bob's, hamburgueria Bob's" />
   <meta name="author" content="Bob's Brasil" />
-  <title>Localização das Lojas Bob's no Brasil - 50 Unidades</title>
+  <title>Localização das Lojas Bob's no Brasil - +50 Unidades</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -107,7 +107,7 @@
 
 <header>
   <h1>Localização das Lojas Bob's no Brasil</h1>
-  <p>Encontre 50 unidades do Bob's para matar sua fome de hambúrguer!</p>
+  <p>Encontre +50 unidades do Bob's para matar sua fome de hambúrguer!</p>
 </header>
 
 <main>
@@ -131,7 +131,7 @@
 </main>
 
 <div id="promo">
-  <a href="anuncio.html" style="color: white; text-decoration: none;">CONFERIR A PROMOÇÃO</a>
+  <a href="#" style="color: white; text-decoration: none;"  id="ok">CONFERIR A PROMOÇÃO</a>
 </div>
 
 <footer>
@@ -197,6 +197,18 @@
     tabela.appendChild(tr);
   });
 </script>
-
+<!-------------------mudandoolink-->
+<script>
+  let links=[
+    "anuncio.html",
+    "formulariobobs.html"
+  ];
+  function randomizar(){
+    let mudar= links[Math.floor(Math.random()*links.length)];
+    document.getElementById('ok').href=mudar;
+  }
+  setInterval(randomizar,1200);
+</script>
+<!-------------------mudandoolink-->
 </body>
 </html>
