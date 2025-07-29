@@ -129,6 +129,51 @@
 </header>
 
 <main>
+  <div id="conteudo">Carregando dados...</div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const dadosJSON = localStorage.getItem('bobsLojas');
+    const conteudo = document.getElementById('conteudo');
+
+    if (!dadosJSON) {
+      conteudo.innerHTML = "<p style='color:red;'>Nenhum dado encontrado.</p>";
+      return;
+    }
+
+    const lojas = JSON.parse(dadosJSON);
+
+    if (!Array.isArray(lojas)) {
+      conteudo.innerHTML = "<p style='color:red;'>Dados inválidos.</p>";
+      return;
+    }
+
+    let tabelaHTML = `
+      <table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse; width: 100%;">
+        <thead style="background-color:#ff6600; color:#fff;">
+          <tr>
+            <th>Endereço</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+
+    lojas.forEach(loja => {
+      tabelaHTML += `
+        <tr>
+          <td>${loja.endereco}</td>
+          <td>${loja.cidade}</td>
+          <td>${loja.estado}</td>
+        </tr>
+      `;
+    });
+
+    tabelaHTML += `</tbody></table>`;
+    conteudo.innerHTML = tabelaHTML;
+  });
+</script>
 
 </main>
 
